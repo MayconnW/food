@@ -1,0 +1,34 @@
+<head>
+  <title>teste</title>
+</head>
+<div class='modal-header'>
+  <h1>Detalhes Pagamento</h1>
+</div>
+
+<div class='fieldset'>
+  <dl>
+    <dt>
+      <span class='integer_type label label-info table_field'>
+        Details
+      </span>
+    </dt>
+    <dd class='well'>
+      <%= @object.total_amount %>
+    </dd>
+    
+    <dt>
+      <span class='integer_type label label-info table_field'>
+        Money received
+      </span>
+    </dt>
+    <dd class='well'>
+      <input id='money' name='money' type="text">
+      <p id="back" class="hide"></p>
+    </dd>
+    
+  </dl>
+</div>
+
+<div class='modal-footer'>
+  <button type="button" data-dismiss="modal" class="btn">Close the Bill</button>
+</div>

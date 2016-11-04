@@ -1,0 +1,103 @@
+<ul class=''>
+  <li title="" rel="" class="icon btn center show_member_link active">
+    <div id="new-payment">
+      <%= link_to "Close the Bill", main_app.bill_path, class:"icon-check" %>
+    </div>
+  </li>
+</ul>
+
+<br>
+
+<div class='fieldset'>
+  <dl>
+    <dt>
+      <span class='integer_type label label-info table_field'>
+        Table
+      </span>
+    </dt>
+    <dd class='well'>
+      <%= @object.table %>
+    </dd>
+    
+    <% if @object.customer %>
+      <dt>
+        <span class='belongs_to_association_type customer_field label label-info'>
+          Customer
+        </span>
+      </dt>
+      <dd class='well'>
+        <a class="pjax" href="/admin/customer/1">
+          <%= @object.customer.name %>
+        </a>
+        <p>
+          <%= "Mobile Phone: #{number_to_phone(@object.customer.mobile,  area_code: true)} " unless @object.customer.mobile == '' %>
+          <%= " | " if (@object.customer.mobile != '' and @object.customer.phone != '') %>
+          <%= "Phone: #{@object.customer.phone} " unless @object.customer.phone == '' %>
+        </p>
+        <p>
+          <%= "Address: #{@object.customer.address} - #{@object.customer.number} / #{@object.customer.city.name} - #{@object.customer.state.name}" %>
+        </p>
+      </dd>
+    <% end %>
+    
+    <dt>
+      <span class='belongs_to_association_type label label-info waiter_field'>
+        Waiter
+      </span>
+    </dt>
+      <dd class='well'>
+        <a class="pjax" href="/admin/waiter/1">
+          <%= @object.waiter.name %>
+        </a>
+    </dd>
+    
+    <dt>
+      <span class='enum_type label label-info status_field'>
+        Status
+      </span>
+    </dt>
+    <dd class='well'>
+      <%= @object.status == 1 ? "Closed":"Open" %>
+    </dd>
+    
+    <dt>
+      <span class='has_many_association_type items_field label label-info'>
+        Items
+      </span>
+    </dt>
+    <dd class='well'>
+      <% total = 0 %>
+      <% @object.items.each do |item| %>
+        <div>
+          <a class="pjax" href="/admin/item/2">
+            <%= "#{item.product.name}" %></a>
+            <%= " - Quantity: #{item.quantity} - Price: #{number_to_currency(item.product.price)} - Total Item: #{number_to_currency(item.product.price*item.quantity)}" %>
+            <% total += (item.product.price*item.quantity) %>
+          </div>
+      <% end %>
+    </dd>
+    
+    <dt>
+      <span class='has_many_association_type items_field label label-info'>
+        Total
+      </span>
+    </dt>
+    <dd class='well'>
+      <%= number_to_currency total %>
+    </dd>
+    
+  </dl>
+</div>
+
+
+<!--
+<script type="text/javascript" charset="utf-8">
+  $(document).on('rails_admin.dom_ready', function() {
+    $('#new-payment').remoteForm({
+      success: function(data, status, xhr) { 
+        $.pjax.reload({container:"[data-pjax-container]"}); 
+      }
+    });
+  });
+</script>
+-->
