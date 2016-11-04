@@ -18,13 +18,24 @@ After cloned the project follow this steps:
 
 5 - Access your site path '/admin'. Like as "http://localhost/admin".
 
-6 - Create an user with 'user' role.
+5.1 - For default the seed will create two users for login. One of them with 'admin' role and the other with 'cashier' role.
 
-7 - Add informations about that user like as projects, experiences,...
+5.2 - The logins are: 
 
-8 - Log out from the admin.
+[
+admin:
+  user: adm@adm.com
+  pass: a1s2d3f4
+  
+Cashier:
+  user: cashier@test.com
+  pass: a1s2d3f4
+]
 
-9 - Log in now with your created user and see how the page is.
+6 - Each role has its dashboard access. Try both.
+
+
+More...
 
 Maybe you need to install the "imagick". Please follow this tutorial "HowToInstallImagick.txt".
 
