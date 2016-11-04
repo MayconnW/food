@@ -1,5 +1,7 @@
 class Category < ActiveRecord::Base
   
+  validates :name, presence: true
+  
   RailsAdmin.config do |config|
     config.model 'Category' do
       visible do

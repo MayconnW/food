@@ -1,6 +1,10 @@
 class Product < ActiveRecord::Base
   belongs_to :category
   
+  validates :category, presence: true
+  validates :name, presence: true, length: { minimum: 2 }
+  validates :price, presence: true, numericality: true
+  
   has_attached_file :photo,
     :styles => {
       :thumb => "100x100#",

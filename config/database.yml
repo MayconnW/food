@@ -19,10 +19,10 @@ development:
 production:
   adapter: postgresql
   encoding: utf8
-  username: bsvzmqrmdvszrz
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-  host: ec2-54-163-226-30.compute-1.amazonaws.com
+  username: innayiqxweiqzv
+  password: xF79K8Ox7AbKf6dzm4dGC0PJVn
+  host: ec2-54-83-198-159.compute-1.amazonaws.com
   port: 5432
   pool: 5
   timeout: 5000
-  database: d6b2c1p8q3npj8
+  database: db3l9u5bdgnh03

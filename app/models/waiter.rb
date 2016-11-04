@@ -1,5 +1,7 @@
 class Waiter < ActiveRecord::Base
   
+  validates :name, presence: true, length: { minimum: 3 }
+  
   RailsAdmin.config do |config|
     config.model 'Waiter' do
       visible do

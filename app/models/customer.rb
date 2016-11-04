@@ -2,6 +2,14 @@ class Customer < ActiveRecord::Base
   belongs_to :city
   belongs_to :state
   
+  validates :name, presence: true, length: { minimum: 3 }
+  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true, on: :create
+  validates :address, presence: true, length: { minimum: 10 }
+  validates :number, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  
   has_attached_file :photo,
     :styles => {
       :thumb => "100x100#",
